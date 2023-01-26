@@ -6,17 +6,6 @@ from getpass import getpass
 from selenium.webdriver.firefox.options import Options
 from bs4 import BeautifulSoup
 
-
-def clicarBotao(fonte, tag, classe='class', argumento='artdeco-button artdeco-button--2 artdeco-button--secondary ember-view' ):
-    fontet = BeautifulSoup(fonte, 'html.parser')
-    botao = fontet.find(tag, attrs={classe: argumento})
-    botao = str(botao)
-    lugar = botao.find('id="ember')
-    numero = botao[lugar:lugar + 15]
-    filtrado = re.sub('[ @id="embr><!st-]', '', numero)
-    xpath = f'//*[@id="ember{filtrado}"]'
-    return xpath
-
 email = str(input('Digite o email: '))
 password = getpass()
 link_pesquisa = 'https://www.linkedin.com/search/results/people/?keywords=tech%20recruiter&origin=CLUSTER_EXPANSION&sid=4d5'
